@@ -5,7 +5,7 @@
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Desarrollo de un Sistema de Comunicación para Satélites basado en estándares espaciales} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -16,21 +16,21 @@
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
 % IMPORTANTE: no omitir titulaciones ni tildación en los nombres, también se recomienda escribir los nombres completos (tal cual los tienen en su documento)
-\autor{Título y Nombre del autor}
+\autor{Ing. Gonzalo Lavigna}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Título y Nombre del director}
-\pertenenciaDirector{pertenencia} 
+\director{Ing. Roberto Cibils}
+\pertenenciaDirector{FIUBA} 
 \codirector{} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+%\cliente{Gonzalo Lavigna}
+%\empresaCliente{Responsable}
  
-\fechaINICIO{30 de abril de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2024}	%Fecha de defensa pública del trabajo final
+\fechaINICIO{4 de marzo de 2025}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{22 de abril de 2025} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{diciembre de 2025}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -59,8 +59,9 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 5 inclusive                & {día} de {mes} de 202X \\ \hline
-%2      & Se completa hasta el punto 9 inclusive
+1      & Se completa hasta el punto 5 inclusive                 & {16} de {marzo} de 2025 \\ \hline  
+2      & Se completa hasta el punto 9 inclusive                 & {27} de {marzo} de 2025 \\ \hline  
+
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -85,7 +86,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ XXX}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente, se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un prototipo de comunicación satelital basado en normas CCSDS con una FPGA. El trabajo tendrá un presupuesto preliminar estimado de 640 horas y un costo estimado de mil dólares estadounidenses (U\$D 1000), con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -95,8 +96,8 @@ Se adjunta a esta acta la planificación inicial.
 \begin{table}[ht]
 \centering
 \begin{tabular}{ccc}
-\begin{tabular}[c]{@{}c@{}}Dr. Ing. Ariel Lutenberg \\ Director posgrado FIUBA\end{tabular} & \hspace{2cm} & \begin{tabular}[c]{@{}c@{}}\clientename \\ \empclientename \end{tabular} \vspace{2.5cm} \\ 
-\multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \supname \\ Director del Trabajo Final\end{tabular}} \vspace{2.5cm} \\
+\begin{tabular}[c]{@{}c@{}}Dr. Ing. Ariel Lutenberg \\ Director posgrado FIUBA\end{tabular} & \hspace{2cm} & \begin{tabular}[c]{@{}c@{}} \supname \\ Director del Trabajo Final\end{tabular} \vspace{2.5cm} \\ 
+%\multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \supname \\ Director del Trabajo Final\end{tabular}} \vspace{2.5cm} \\
 \end{tabular}
 \end{table}
 
@@ -106,52 +107,44 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
+El presente proyecto aborda el diseño y la implementación de un sistema digital para comunicaciones satelitales, basado en el estándar internacional establecido por el \textit{Consultative Committee for Space Data Systems} (CCSDS). La motivación principal radica en la creciente demanda de soluciones estandarizadas y confiables para la comunicación satelital, especialmente orientadas a pequeños satélites y misiones espaciales de bajo presupuesto, donde las soluciones tradicionales resultan prohibitivas en términos de costo y complejidad.
 
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cuál es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
+Este proyecto se enmarca en un esfuerzo personal y académico, como Trabajo Final de la Carrera de Especialización en Sistemas Embebidos. No existen condiciones especiales relacionadas con financiamiento externo, acuerdos de confidencialidad o propiedad intelectual específica y el objetivo es proporcionar un prototipo abierto y documentado para futuras implementaciones en diferentes organizaciones interesadas en el ámbito aeroespacial.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+El desafío principal radica en implementar eficientemente las especificaciones del estándar CCSDS en \textit{hardware} \textit{Field-Programmable Gate Array} (FPGA), cumpliendo estrictos requerimientos de confiabilidad, robustez y eficiencia energética. El estado del arte actual muestra diversas implementaciones, generalmente complejas y costosas, orientadas a satélites de mayor tamaño o con mayores recursos disponibles. Este proyecto propone un enfoque simplificado y eficiente que destaca por su simplicidad, accesibilidad económica y facilidad de integración en satélites pequeños.
 
+En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema, compuesto por los siguientes módulos principales:
 \begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
+	\item Ethernet: interfaz fisica externa \textit{ethernet} aquí es donde la FPGA se conecta con \textit{hardware} externo,ya sea una estación terrena o una red local.
+	\item \textit{Universal Asynchronous Receiver-Transmitter} (UART): es la interfaz de comunicación serial que sirve típicamente para enviar comandos al FPGA y recibir datos del estado del sistema, desde una PC o terminal externa.
+	\item Bloque Ethernet: gestiona la comunicación de datos \textit{ethernet} a nivel digital dentro de la FPGA. Convierte las señales físicas Ethernet en datos digitales que puedan ser procesados internamente por el sistema y viceversa.
+	\item Control: se encarga del manejo interno de comandos recibidos desde el bloque UART y la generación de datos de estado del sistema. Es el bloque de gestión de mensajes, comandos y monitoreo del sistema. 
+	\item Enrutador de paquetes: este bloque cumple la función de distribución y conmutación interna. Es decir, recibe paquetes de datos Ethernet desde el bloque Ethernet y determina hacia dónde dirigirlos: hacia la cadena transmisora (codificador CCSDS) o la cadena receptora (decodificador CCSDS).
+	\item Transformación CCSDS: convierte los datos desde el formato Ethernet hacia tramas del estándar CCSDS \textit{Advanced Orbiting Systems} (AOS). Básicamente, consiste es una traducción hacia el protocolo estandarizado espacial.
+	\item Codificador CCSDS : codifica las tramas CCSDS AOS generadas previamente, añadiendo información adicional para detección y corrección de errores (usualmente utilizando Reed-Solomon). Este bloque asegura robustez y confiabilidad en la comunicación.
+	\item Modulador: acondiciona las tramas codificadas digitalmente para simular su transmisión hacia un canal físico. En este caso, realiza una modulación lógica que simula el comportamiento real de transmisión.
+	\item Decodificador CCSDS: decodifica las tramas recibidas, verificando su integridad y corrigiendo errores mediante los códigos Reed-Solomon introducidos por el codificador CCSDS.
+	\item Transformación Ethernet: convierte nuevamente las tramas CCSDS AOS decodificadas hacia paquetes Ethernet, facilitando así su distribución posterior hacia interfaces externas o internas.
 \end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
-
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.65\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=1\textwidth]{./Figuras/TESIS_GONZALO.drawio.png}
 \caption{Diagrama en bloques del sistema.}
 \label{fig:diagBloques}
 \end{figure}
 
-\vspace{25px}
+%\vspace{25px}
 
-El tamaño del texto en TODAS las figuras debe ser adecuado \textbf{para que NO pase lo que ocurre en la figura \ref{fig:diagBloques}}, donde el lector debe esforzarse para poder leer el texto. 
 
-Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama. Se recomienda evitar colores primarios (como rojo, verde o cyan) y usar la gama de colores pastel.
+Este proyecto se encuentra en una etapa inicial del ciclo de vida, enfocándose en la validación mediante simulaciones en un entorno controlado previo a cualquier implementación física más avanzada.
 
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+El cliente objetivo lo constituyen organizaciones o investigadores dedicados al desarrollo de misiones satelitales pequeñas, quienes valoran soluciones abiertas, económicas y estandarizadas para facilitar la integración y reducir riesgos en sus misiones.
+
+La innovación principal del proyecto reside en simplificar el estándar CCSDS para aplicaciones de bajo costo y alta eficiencia, facilitando su adopción y garantizando interoperabilidad en futuras misiones espaciales.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
-
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces \textbf{solo dejarla en el rol más importante}. 
-
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, \textbf{no debe ser colocado también como miembro del equipo}.
-
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -160,198 +153,250 @@ Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+%Auspiciante   & -                 & -              	& -        	\\ \hline
+Cliente       & -                 & -               & -        	\\ \hline
+%Impulsor      & -                 & -              	& -       	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+Colaboradores & -                 & -              	& -       	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director del Trabajo Final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+%Equipo        & -
+%			  & -                 & -               	\\ \hline
+%Opositores    & -                 & -              	& -        	\\ \hline
+Usuario final & Industria satelital & -             	& -       	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los orientadores.
+\vspace{25px}
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Orientador: la Dra. Ing. María Gómez es experta en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del firmware del embebido.
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
+	\item Orientador: el Ing. Roberto Cibils es experto en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del \textit{firmware} del embebido. Roberto Cibils cuenta con basta experiencia en sistemas robustos para aplicaciones espaciales y calificación de partes.
+	\item Responsable: será quien dispondrá del conocimiento y desarrollo del proyecto.
+	\item Usuario final: el usuario final de este proyecto serían principalmente, ingenieros, universidades y organizaciones dedicadas al desarrollo e implementación de misiones satelitales, especialmente aquellas orientadas a pequeños satélites o misiones de bajo costo.
 \end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que continúe con la idea de la frase ``el propósito de este proyecto es...'' (omitir la frase, ya que está en el título de la sección).
-\end{consigna}
+El propósito del proyecto es el desarrollo de un prototipo de un sistema de comunicación basado en el estándar CCSDS dentro de una FPGA. Tiene como objetivo proporcionar una solución tecnológica eficiente y accesible para aplicaciones satelitales, especialmente orientada a misiones de satélites pequeños y de bajo costo. De esta forma, se pretende reducir significativamente la complejidad y los costos asociados a sistemas tradicionales, favoreciendo la investigación, el desarrollo y el despliegue de futuras misiones espaciales por parte de organizaciones académicas y científicas.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo que se va a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto. Por ejemplo:
-
-El proyecto incluye:
+El presente proyecto incluye:
 \begin{itemize}
-	\item Ítem 1.
-	\item Ítem 2.
-		\begin{itemize}
-		\item Subítem 1.
-		\item Subítem 2.
-		\item ...
-		\end{itemize}
-	\item ...
-	
+	\item Diseño e implementación de un sistema digital de comunicación satelital basado en el estándar CCSDS.
+	\item Integración de algoritmos de codificación y decodificación Reed-Solomon según CCSDS.
+	\item Desarrollo integral del sistema sobre una placa de desarrollo de FPGA.
+	\item Simulación del canal de comunicación utilizando un esquema de \textit{loopback} lógico.
+	\item Validación funcional mediante herramientas de simulación.
+	\item Validación de la implementación utilizando herramientas de síntesis como Vivado.
+	\item Desarrollo de una interfaz mínima utilizando UART para control y monitoreo del sistema.
+	\item Documentación técnica completa del diseño y código fuente.
+	\item Liberación del código bajo licencia de código abierto.
 \end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
+El presente proyecto no incluye:
+\begin{itemize}
+	\item Implementación física de \textit{hardware} de radiofrecuencia (RF), ni diseño de antenas.
+	\item Integración real con \textit{hardware} satelital.
+	\item Realización de pruebas en ambientes espaciales reales o estaciones terrenas operativas.
+	\item Desarrollo de software adicional para análisis avanzado o procesamiento de datos fuera del alcance del sistema propuesto.
+	\item Utilización de conversor analógico digital.
+	\item Utilización de conversor digital analógico.
+\end{itemize}
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-``Para el desarrollo del presente proyecto se supone que: ...''
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-	\item Supuesto 1.
-	\item Supuesto 2.
-	\item ...
+	\item Disponibilidad de recursos:
+	\begin{itemize}	
+		\item Se dispondrá oportunamente de una placa de desarrollo que contenga una FPGA.
+		\item Cable \textit{Universal Serial Bus} USB a UART, que permitirá establecer comunicación entre la FPGA y una terminal externa (por ejemplo, una computadora).
+		\item Cable Ethernet (categoría 5e o superior), con conectores RJ-45 en ambos extremos.
+		\item El proyecto contempla la utilización de módulos proporcionados por terceros para realizar las funciones específicas de codificación y decodificación Reed-Solomon según lo establecido en el estándar CCSDS. Estos módulos externos, previamente validados y disponibles abiertamente, permitirán acelerar el desarrollo del sistema.
+	\end{itemize}
+	
+	\item Experiencia técnica:
+	\begin{itemize}	
+		\item El responsable posee un nivel adecuado de conocimiento y experiencia previa en leguajes de descripción de \textit{hardware} como VHDL o Verilog, necesarios para el diseño, implementación y validación lógica del sistema propuesto.
+		\item El responsable dispone de la capacidad técnica para integrar y validar adecuadamente módulos de terceros, como los bloques de codificación y decodificación Reed-Solomon.
+		\item El responsable cuenta con conocimientos sólidos en el manejo del estándar CCSDS y familiaridad con las herramientas de desarrollo FPGA, como Vivado y ModelSim.
+		\item Se dispondrán de las 640 horas requeridas para realizar el proyecto.
+		
+	\end{itemize}
+	
+	
 \end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
 
-\begin{enumerate}
+
+\begin {enumerate}
 	\item Requerimientos funcionales:
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
+			\item El sistema debe tener una baja latencia en el procesamiento y transferencia de paquetes (menor a 15 ms).				
+			\item El usuario debe ser capaz de configurar todos los bloques del sistema a través de comando externos utilizando UART.
+			\item El bloque Ethernet debe soportar transmisión y recepción de paquetes estándar de Ethernet (IEEE 802.3).
+			\item El bloque Ethernet debe soportar una velocidad de comunicación de 100 Mbps.
+			\item El bloque Ethernet debe tener la capacidad de manejar en simultáneo múltiples paquetes entrantes y salientes.
+			\item El bloque Ethernet debe tener la capacidad de generar estadísticas básicas de red: paquetes transmitidos, paquetes recibidos, errores detectados.					
+			\item El bloque Ethernet debe tener la capacidad de identificar y gestionar errores básicos en paquetes Ethernet.
+			\item El bloque Ethernet debe brindar soporte para tramas Ethernet estándar de hasta 1500 bytes (\textit{Maximum Transmission Unit} estándar).
+			\item El bloque enrutador debe ser capaz de recibir, procesar y enrutar paquetes Ethernet internamente entre los diferente módulos del sistema.
+			\item El bloque enrutador debe tener la capacidad de almacenamiento temporal de unos 4 paquetes para evitar la pérdida de datos en situaciones de congestión temporal.
+			\item El bloque enrutador deberá contar con un mecanismo interno para realizar una conexión logica en modo \textit{loopback}, permitiendo que los paquetes Ethernet recibidos puedan ser automáticamente redirigidos a la cadena de transmisión de datos Ethernet. Este mecanismo facilitará pruebas y validaciones funcionales.
+			\item El sistema debe encapsular correctamente los paquetes Ethernet recibidos en tramas AOS según especificaciones del estándar CCSDS 732.0-B.
+			\item El sistema debe ser capaz de codificar y decodificar tramas CCSDS completas agregando códigos Reed-Solomon para detección y corrección de errores, según la configuración estándar (255,239).
+			\item El bloque modulador debe implementar un esquema de modulación digital compatible con los estándares utilizados en sistemas espaciales CCSDS: \textit{Binary Phase Shift Keying} (BPSK) y \textit{Quadrature Phase Shift Keying} (QPSK) según lo especificado en el estándar CCSDS 401.0-B.			
+		\end{enumerate}	
 	\item Requerimientos de documentación:
 		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
+			\item Toda la documentación técnica del proyecto, incluyendo diagramas, especificaciones, manuales de usuario, y procedimientos de validación y configuración, deberán estar claramente redactados en español, utilizando un lenguaje formal y técnico.
+			\item La totalidad del código fuente generado, junto con su documentación asociada, deberá publicarse en repositorios públicos de acceso general garantizando así su disponibilidad abierta para cualquier usuario interesado.		
+			\item Deberá incluirse una guía breve («README») en los repositorios públicos, que describa claramente el objetivo, características principales y licencia de uso.
+			\item Todo el código fuente generado en este proyecto, junto con su documentación asociada, deberá publicarse bajo la licencia de código abierto BSD de 3 cláusulas. Esta licencia permite explícitamente el uso libre, modificación, distribución y comercialización del software y derivados.
+		\end{enumerate}				
+	\item Requerimientos de verificación y validación:
+		\begin{enumerate}
+			\item Se deberán desarrollar bancos de pruebas específicos para cada módulo interno del sistema, utilizando lenguajes estándares como Python, VHDL o SystemVerilog, que permitan simular y verificar su correcto funcionamiento individual.
+			\item Los bloques Transformación CCSDS y Transformación Ethernet se verificarán en conjunto conectando los mismos en \textit{loopback} en un banco de pruebas realizado para dicho propósito.
+			\item Los bloques Codificador CCSDS y Decodificador CCSDS se verificarán en conjunto conectando los mismos en \textit{loopback} en un banco de pruebas realizado para dicho propósito.			
+			\item Los bloques Modulador y Demodulador se verificarán en conjunto conectando los mismos en \textit{loopback} en un banco de pruebas realizado para dicho propósito.		
+			\item Todos las simulaciones funcionales deben realizar con herramientas reconocidas como Vivado Simulator, ModelSim o herramientas equivalentes.		
+			\item La verificación del sistema deberá incluir simulaciones de integración, donde se validará la interoperabilidad de los módulos interconectados mediante interfaces AXI-Stream y AXI-Lite.		
+			\item La validación del sistema deberá realizarse haciendo pruebas funcionales en la placa de desarrollo en modo \textit{loopback} lógico, verificando el cumplimiento de los requisitos del estándar CCSDS y la correcta operación del flujo completo desde generación hasta recepción de datos.			
+			\item Se debe incluir una simulación con la inserción controlada de errores (por ejemplo, ruido o corrupción artificial de paquetes) para verificar la robustez y la capacidad de corrección de errores del sistema implementado.						
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+				
+	\item Requerimientos de interfaz:
+		\begin{enumerate}
+			\item El sistema deberá contar con una interfaz UART para comunicación serie externa, que permita monitorear el estado operativo y enviar comandos básicos para configurar y controlar la operación del sistema.
+			\item La interfaz UART deberá funcionar bajo una configuración estándar de comunicación (8 bits de datos, sin paridad y 1 bit de parada), soportando tasas configurables entre 9600 y 115200 baudios.
+			\item Deberá incluirse una interfaz Ethernet física compatible con el estándar IEEE 802.3, para la transmisión y recepción externa de paquetes Ethernet estándar (mínimo 100 Mbps).
+			\item Todos los módulos internos del sistema deberán utilizar el protocolo \textit{AXI-Stream} como estándar para la comunicación e intercambios de paquetes, asegurando así la compatibilidad, simplicidad en la integración y estandarización del flujo interno del sistema.
+			\item Todos los módulos internos del sistema deberán contar con una interfaz de control y monitoreo basada en el protocolo \textit{AXI-Lite}. Esta interfaz permitirá realizar operaciones básicas de lectura y escritura en registros internos para configurar parámetros específicos de cada módulo y obtener información sobre el estado operativo en tiempo real.
+		\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+Se utilizó la asignación de \textit{story points} para evaluar las historias de usuario. El valor se determinó considerando los siguientes factores: tiempo, complejidad e incertidumbre asociada con la tarea. 
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+\begin{itemize}
+	\item Tiempo.
+	\item Complejidad.
+	\item Riesgo.
+\end{itemize}
 
-El formato propuesto es: 
-\begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
+Para las estimaciones mediante  \textit{story points} se utilizará como escala números de la serie de Fibonacci comprendidos en el rango [1, 8]. A cada criterio se le asigna un número dentro de esta escala. Luego, se sumarán los números de cada criterio para obtener una calificación final. Si este número no pertenece a un valor de la serie se aproxima al más cercano. Un número más grande indica mayor complejidad, riesgo y/o tiempo.
 
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
-\end{enumerate}
-\end{consigna}
+\begin{itemize}
+\item Historia 1: Como operador del sistema quiero monitorear el estado operativo para verificar rápidamente que el sistema funciona correctamente. Tiempo: 2 - Complejidad: 2 - Riesgo: 1 - \textit{story points}: 5.
+\item Historia 2: Como ingeniero de integración, quiero una interfaz Ethernet estándar (IEEE 802.3) para enviar y recibir paquetes desde sistemas externos en pruebas y validaciones. Tiempo: 3 - Complejidad: 3 - Riesgo: 2 - \textit{story points}: 8.
+\item Historia 3: Como desarrollador de FPGA, quiero que todos los módulos internos se comuniquen mediante AXI-Stream para asegurar la interoperabilidad y escalabilidad del diseño. Tiempo: 2 - Complejidad: 2 - Riesgo: 1 - \textit{story points}: 5.
+\item Historia 4: Como desarrollador FPGA, quiero utilizar bloques validados de codificación y decodificación Reed-Solomon provistos por terceros para acelerar el desarrollo y reducir riesgos técnicos. Tiempo: 2 - Complejidad: 1 - Riesgo: 8 - \textit{story points}: 13.
+\item Historia 5: Como ingeniero de integración, quiero realizar simulaciones en modo \textit{loopback} lógico para validar el funcionamiento completo del protocolo CCSDS sin \textit{hardware} externo adicional. Tiempo: 2 - Complejidad: 1 - Riesgo: 8 - \textit{story points}: 13.
+\item Historia 6: Como usuario final , quiero acceder al código fuente y documentación completa del sistema en repositorios públicos para adaptarlo y reutilizarlo en futuras misiones satelitales. Tiempo: 1 - Complejidad: 1 - Riesgo: 1 - \textit{story points}: 3.
+\item Historia 7: Como desarrollador de FPGA, quiero configurar fácilmente los módulos internos mediante AXI-Lite para adaptar rápidamente los parámetros operativos del sistema en diferentes escenarios de prueba. Tiempo: 1 - Complejidad: 3 - Riesgo: 1 - \textit{story points}: 5.
+\item Historia 8: Como desarrollador de FPGA, quiero contar con bancos de prueba automatizados para realizar simulaciones rápidas y repetibles de los módulos individuales del sistema.Tiempo: 5 - Complejidad: 3 - Riesgo: 5 - \textit{story points}: 13.
+\end{itemize}
+
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Los entregables del proyecto son (ejemplo):
+Los entregables del proyecto son:
 
 \begin{itemize}
-	\item Manual de usuario.
-	\item Diagrama de circuitos esquemáticos.
-	\item Código fuente del firmware.
-	\item Diagrama de instalación.
-	\item Memoria del trabajo final.
-	\item etc...
+	\item Informe de avance del proyecto.
+	\item Código fuente completo del sistema implementado (con licencia BSD-3).
+	\item Bancos de pruebas utilizados para simulación y validación.
+	\item Documentación técnica del diseño, diagramas y especificaciones técnicas.
+	\item Manual de uso y guía rápida para configuración y operación del prototipo desarrollado.
+	\item Resultados y documentación de las pruebas realizadas en placa, con el prototipo del sistema implementado y funcionando en una placa de desarrollo de FPGA.
+	\item Informe final, incluyendo resultados obtenidos, análisis del desempeño, conclusiones y recomendaciones.
 \end{itemize}
-\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1 (suma h)
+\item Gestión y documentación del proyecto (100 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Definición inicial del alcance del proyecto (8 h).
+	\item Revisión y aprobación del alcance definitivo (8 h).
+	\item Informes preliminares de avance del proyecto (8 h).
+	\item Elaboración de documentación técnica general, diagrama en bloque y documentación de la arquitectura (10 h).
+	\item Escribir memoria técnica (40 h).
+	\item Escribir y preparar presentación final (10 h).
+	\item Crear documento de lecciones aprendidas (8 h).	
+	\item Publicación de documentación en repositorios públicos (8 h).	
 	\end{enumerate}
-\item Grupo de tareas 2 (suma h)
+\item Diseño conceptual y arquitectura (60 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Investigación inicial de los diversos estándares CCSDS (20 h).
+	\item Análisis de requerimientos técnicos CCSDS a implementar en la FPGA (20 h).
+	\item Diseño conceptual del sistema (4 h).
+	\item Diseño detallado del sistema y diagramas finales (16 h).
 	\end{enumerate}
-\item Grupo de tareas 3 (suma h)
+\item  Configuración del entorno de desarrollo (40 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Instalación y configuración inicial del software Vivado (4 h).
+	\item Instalación y configuración del simulador \textit{ModelSim} o equivalente.(4 h).
+	\item Preparación de proyecto inicial (estructura del proyecto, repositorios Git) (4 h).
+	\item Configuración del entorno para integración continua y gestión de código fuente (28 h).
 	\end{enumerate}
-\end{enumerate}
+\item  Desarrollo de las interfaces del sistema (60 h)
+	\begin{enumerate}
+	\item Diseño del módulo interfaz UART (10 h).
+	\item Implementación y validación módulo UART (10 h).
+	\item Diseño del módulo interfaz Ethernet (20 h).
+	\item Implementación y validación módulo Ethernet (20 h).		
+	\end{enumerate}
+\item  Implementación del protocolo AXI interno (40 h)
+	\begin{enumerate}
+	\item Diseño e implementación interfaces AXI-Stream (20 h).
+	\item Diseño e implementación interfaces AXI-Lite (20 h).
+	\end{enumerate}	
+\item  Integración bloques Reed-Solomon (120 h)	
+	\begin{enumerate}
+	\item Integración bloque codificador Reed-Solomon (20 h).
+	\item Validación y ajustes codificador Reed-Solomon (20 h).
+	\item Validación cruzada del módulo codificador Reed-Solomon contra modelo Python (20 h).	
+	\item Integración bloque decodificador Reed-Solomon (20 h).
+	\item Validación y ajustes decodificador Reed-Solomon (20 h).
+	\item Validación cruzada del módulo decodificador Reed-Solomon contra modelo Python (20 h).		
+	\end{enumerate}	
+	\item Implementación módulos conversión Ethernet/AOS (60 h)
+	\begin{enumerate}
+		\item Diseño e implementación módulo Ethernet a AOS (20 h).
+		\item Pruebas módulo Ethernet a AOS (10 h).
+		\item Diseño módulo AOS a Ethernet (20 h).
+		\item Pruebas módulo AOS a Ethernet (10 h).
+	\end{enumerate}	
+	\item Implementación bloques modulación/demodulación (60 h)
+	\begin{enumerate}
+		\item Diseño e implementación del módulo modulador CCSDS (10 h).
+		\item Pruebas módulo modulador CCSDS (10 h).
+		\item Diseño e implementación del módulo demodulador CCSDS (20 h).
+		\item Pruebas módulo demodulador CCSDS (20 h).
+	\end{enumerate}	
+	\item Validación y pruebas (100 h)
+	\begin{enumerate}
+		\item Diseño y desarrollo de bancos de prueba en \textit{loopback} (20 h).
+		\item Ejecución y validación de bancos de prueba en \textit{loopback} (20 h).
+		\item Síntesis e implementación del sistema completo en placa FPGA (40 h).
+		\item Ejecución de pruebas de validación sobre el prototipo implementado (20 h).
+	\end{enumerate}	
+	\end{enumerate}		
 
-Cantidad total de horas: tantas.
-
-\textbf{¡Importante!:} la unidad de horas es h y va separada por espacio del número. Es incorrecto escribir ``23hs".
-
-\textbf{Se recomienda que no haya ninguna tarea que lleve más de 40 h.} De ser así se recomienda dividirla en tareas de menor duración.
-
-\end{consigna}
+Cantidad total de horas: 640.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
